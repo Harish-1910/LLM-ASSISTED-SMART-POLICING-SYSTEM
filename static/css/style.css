@@ -1,0 +1,58 @@
+/* static/css/style.css */
+
+/* Use the JPG image as full-page background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('../img/avatar_smoke.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* Semi-transparent container for content */
+.container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    margin: 50px auto;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+/* Input fields */
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #ff6600;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4500;
+}
+
+/* Paragraph for LLM results */
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+    border-radius: 10px;
+}

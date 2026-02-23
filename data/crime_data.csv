@@ -1,0 +1,25 @@
+Region,Crime Type,Number of Cases,Month,Date,Time of Day,Severity
+Mumbai,Theft,120,Jan,2024-01-15,Night,Moderate
+Mumbai,Assault,80,Feb,2024-02-10,Evening,High
+Delhi,Murder,25,Mar,2024-03-05,Night,Severe
+Delhi,Fraud,200,Apr,2024-04-20,Afternoon,Moderate
+Bengaluru,Cyber Crime,150,May,2024-05-08,Night,High
+Chennai,Robbery,90,Jun,2024-06-12,Evening,High
+Bengaluru,Drug Abuse,60,Jul,2024-07-18,Night,Severe
+Chennai,Traffic Violation,300,Aug,2024-08-25,Morning,Low
+Mumbai,Domestic Violence,110,Sep,2024-09-30,Night,High
+BeMumbai,Bribery,180,May,2024-05-25,Afternoon,Moderate
+Bengaluru,Fraud,230,Jun,2024-06-15,Afternoon,Moderate
+Chennai,Murder,20,Jul,2024-07-30,Night,Severe
+Delhi,Domestic Violence,130,Aug,2024-08-14,Night,High
+Mumbai,Traffic Violation,400,Sep,2024-09-19,Morning,Low
+Bengaluru,Vehicle Theft,150,Oct,2024-10-28,Night,High
+Chennai,Cyber Crime,80,Nov,2024-11-03,Afternoon,High
+Delhi,Drug Abuse,90,Dec,2024-12-22,Night,Severe
+ngaluru,Bribery,130,Oct,2024-10-09,Afternoon,Moderate
+Chennai,Vehicle Theft,75,Nov,2024-11-21,Night,High
+Delhi,Kidnapping,40,Dec,2024-12-05,Night,Severe
+Mumbai,Cyber Crime,95,Jan,2024-01-22,Afternoon,Moderate
+Bengaluru,Theft,200,Feb,2024-02-14,Night,Moderate
+Chennai,Assault,55,Mar,2024-03-27,Evening,High
+Delhi,Robbery,120,Apr,2024-04-17,Night,High

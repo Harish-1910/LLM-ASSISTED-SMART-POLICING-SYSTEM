@@ -1,0 +1,53 @@
+# -----------------------------
+# Python
+# -----------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# -----------------------------
+# Environment Variables
+# -----------------------------
+.env
+.venv
+# -----------------------------
+# Flask
+# -----------------------------
+instance/
+.webassets-cache
+
+# -----------------------------
+# VS Code
+# -----------------------------
+.vscode/
+
+# -----------------------------
+# Jupyter Notebook
+# -----------------------------
+.ipynb_checkpoints/
+
+# -----------------------------
+# System Files
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Logs
+# -----------------------------
+*.log
+
+# -----------------------------
+# Dataset (optional)
+# Uncomment if you don't want to push dataset
+# -----------------------------
+# crime_underscore_data.csv

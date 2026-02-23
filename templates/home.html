@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Welcome to Crime Analysis Dashboard</h1>
+    <p>Analyze crime data with AI insights. Ask questions about crimes in cities, and get detailed, data-backed or AI-generated responses.</p>
+
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('login') }}">
+            <button type="button">Login</button>
+        </a>
+        <a href="{{ url_for('register') }}">
+            <button type="button">Register</button>
+        </a>
+    </div>
+</div>
+{% endblock %}
