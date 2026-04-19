@@ -1,22 +1,53 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
-from groq import Groq
 import pandas as pd
 import os
 from dotenv import load_dotenv
+
+#  LangChain Imports
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+from langchain_groq import ChatGroq   # make sure installed
 
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "supersecret"
 
-# Initialize Groq client
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+#  LangChain LLM (Groq)
+llm = ChatGroq(
+    groq_api_key=os.getenv("GROQ_API_KEY"),
+    model_name="llama-3.1-8b-instant",
+    temperature=0.4
+)
+
+#  Prompt Template
+prompt_template = PromptTemplate(
+    input_variables=["query", "data"],
+    template="""
+You are an intelligent crime data analyst.
+
+User Query:
+{query}
+
+Relevant Crime Dataset Records:
+{data}
+
+Instructions:
+- Explain what crimes occurred
+- Identify trends or patterns
+- Mention frequency or severity if visible
+- Provide analytical insights in paragraph format
+"""
+)
+
+#  Chain
+chain = LLMChain(llm=llm, prompt=prompt_template)
 
 # In-memory users
 users = {}
 
-# Load dataset once
+# Load dataset
 CSV_PATH = "crime_data.csv"
 
 if os.path.exists(CSV_PATH):
@@ -73,54 +104,22 @@ def dashboard():
     if request.method == "POST":
 
         query = request.form.get("query")
+        dataset_context = "No relevant dataset records were found."
 
-        dataset_context = None
-
-        # 🔍 Retrieve relevant dataset rows
+        # 🔍 Data filtering
         if df is not None and query:
             filtered = df[df["combined_text"].str.contains(query.lower(), na=False)]
 
             if not filtered.empty:
                 dataset_context = filtered.head(15).drop(columns=["combined_text"]).to_string(index=False)
 
-        # 🧠 Build LLM prompt
-        if dataset_context:
-            prompt = f"""
-User Query:
-{query}
+        #  LangChain Call
+        response = chain.run({
+            "query": query,
+            "data": dataset_context
+        })
 
-Relevant Crime Dataset Records:
-{dataset_context}
-
-Based strictly on the above dataset:
-- Explain what crimes occurred
-- Identify trends or patterns
-- Mention frequency or severity if visible
-- Provide analytical insights in descriptive paragraph format
-"""
-        else:
-            prompt = f"""
-User Query:
-{query}
-
-No relevant dataset records were found.
-Provide a detailed explanation using general crime knowledge.
-"""
-
-        # 🚀 LLM Call
-        completion = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are an intelligent crime data analyst. Generate descriptive analytical insights."
-                },
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.4
-        )
-
-        result = completion.choices[0].message.content
+        result = response
 
     return render_template("page1.html", result=result, query=query)
 
