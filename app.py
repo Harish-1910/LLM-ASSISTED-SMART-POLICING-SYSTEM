@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 #  LangChain Imports
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain_groq import ChatGroq   # make sure installed
+from langchain_groq import ChatGroq   
 
 load_dotenv()
 
